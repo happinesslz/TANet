@@ -125,7 +125,7 @@ bev  AP:90.86, 90.25, 89.43
 aos  AP:90.75, 89.18, 87.20
 ```
 
-#### 2.Ped&Cyc
+#### 2.Ped&Cyc (Only one model)
 ```
 Cyclist AP@0.50, 0.50, 0.50:
 bbox AP:86.94, 70.20, 66.22
