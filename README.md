@@ -8,7 +8,7 @@ Our code is mainly based on [PointPillars](https://github.com/nutonomy/second.py
     First, we equally divide the point clouds into a voxel grid consisting of a set of voxels. Then, the stacked triple attention separately process each voxel to obtain a more discriminative representation. Subsequently, a compact feature representation for each voxel is extracted by aggregating the points inside it in a max-pooling manner. And we arrange the voxel feature according to its original spatial position in the grid, and thus lead to a feature representation for the voxel grid in the shape of C' × H × W . Finally, the coarse-to-fine regression is employed to generate the final 3D bounding boxes.
 
 
-## Reuslts
+## Visualization
 
 The visualization of learned feature map and predicted confidence score for PointPillars and Ours:
 ![image](imgs/Result_Vis.png)
@@ -110,8 +110,7 @@ eval_input_reader: {
 }
 ```
 
-### Results
-
+### Results on TANet
 #### 1. Car
 ```
 Car AP@0.70, 0.70, 0.70:
