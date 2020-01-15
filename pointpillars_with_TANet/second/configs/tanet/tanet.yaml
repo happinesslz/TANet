@@ -1,0 +1,21 @@
+Network: TANet      # RefineDet ...
+
+
+# config for extracting the voxel feature with TA module
+TA:
+
+    INPUT_C_DIM: 9
+    BOOST_C_DIM: 64  # or 32
+    NUM_POINTS_IN_VOXEL: 100
+    REDUCTION_PA: 8
+    REDUCTION_CA: 8
+    USE_PACA_WEIGHT: True
+
+PSA:
+    C_Bottle: 128
+    C_Reudce: 32
+
+
+
+
+
