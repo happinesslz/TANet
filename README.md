@@ -1,6 +1,8 @@
 # TANet
 
 Our code is mainly based on [PointPillars](https://github.com/nutonomy/second.pytorch) and [SECOND](https://github.com/traveller59/second.pytorch), thanks for them! We also plan to introduce TensorRT to further improve the inference speed. For more information please refer the [Paper](https://arxiv.org/pdf/1912.05163.pdf).  
+### TODO:  
+Add TANet to the newest [second.pytorch](https://github.com/traveller59/second.pytorch) before AAAI-2020 conference. 
 
 
 ## The network architecture of [TANet](https://arxiv.org/pdf/1912.05163.pdf)
@@ -109,6 +111,14 @@ eval_input_reader: {
   kitti_root_path: "KITTI_DATASET_ROOT"
 }
 ```
+
+### Run the Code 
+The common can be found in pointpillars_with_TANet/second/*sh
+#### 1. Train TANet for Car 
+	bash run_car_16_tanet.sh
+#### 2. Train TANet for Ped&Cyc
+	bash run_ped_cycle_16_tanet.sh
+Note:  you need specify the absolute  path of Model_Path
 
 ### Results on TANet
 #### 1. Car
