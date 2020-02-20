@@ -122,8 +122,7 @@ Note:  you need specify the absolute  path of Model_Path
 
 ### Results on TANet
 **Trained model is available (Note: Please use the newest code!):**
-**Link:**  https://pan.baidu.com/s/1TfeYpkyRORPFLktS9REc2g
-**Password:**  5fe1
+  https://pan.baidu.com/s/1TfeYpkyRORPFLktS9REc2g   **Password:**  5fe1
 
 #### 1. Car
 ```
