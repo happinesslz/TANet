@@ -21,7 +21,7 @@ The visualization of learned feature map and predicted confidence score for Poin
 
 ## TANet for [PointPillars](https://github.com/nutonomy/second.pytorch) 
 ### Start Up
-Experiment: Tested in Ubuntu 16.04 with python 3.6+, pytorch 1.0.0+, CUDA9.0
+Experiment: Tested in Ubuntu 16.04 with python 3.6+, pytorch 1.0.0+, CUDA9.0 in Titan XP/Titan V.
 
 ### Install:
 you can refer the following steps or directly refer  [PointPillars](https://github.com/nutonomy/second.pytorch) 
@@ -122,7 +122,8 @@ Note:  you need specify the absolute  path of Model_Path
 
 ### Results on TANet
 **Trained model is available (Note: Please use the newest code!):**
- **Baiduyunpan:** https://pan.baidu.com/s/1TfeYpkyRORPFLktS9REc2g   
+1. **Google Driver:** https://drive.google.com/drive/folders/1jSuQy5svfkDBw_4JszSzmIp9tpH1Ox7f
+2. **Baiduyunpan:** https://pan.baidu.com/s/1TfeYpkyRORPFLktS9REc2g   
  **Password:**  5fe1
 
 #### 1. Car
@@ -166,7 +167,7 @@ aos  AP:52.15, 50.10, 47.10
 
 ## TANet for [SECOND](https://github.com/traveller59/second.pytorch) 
 ### Start Up
-TODO:  we will add TANet to the newest [second.pytorch](https://github.com/traveller59/second.pytorch) before AAAI-2020 conference. 
+TODO:  we will add TANet to the newest [second.pytorch](https://github.com/traveller59/second.pytorch) . 
 
 
 ## Citation
