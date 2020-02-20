@@ -2,7 +2,7 @@
 
 Our code is mainly based on [PointPillars](https://github.com/nutonomy/second.pytorch) and [SECOND](https://github.com/traveller59/second.pytorch), thanks for them! We also plan to introduce TensorRT to further improve the inference speed. For more information please refer the [Paper](https://arxiv.org/pdf/1912.05163.pdf).  
 ### TODO:  
-Add TANet to the newest [second.pytorch](https://github.com/traveller59/second.pytorch) before AAAI-2020 conference. 
+Add TANet to the newest [second.pytorch](https://github.com/traveller59/second.pytorch). 
 
 
 ## The network architecture of [TANet](https://arxiv.org/pdf/1912.05163.pdf)
@@ -121,6 +121,10 @@ The common can be found in pointpillars_with_TANet/second/*sh
 Note:  you need specify the absolute  path of Model_Path
 
 ### Results on TANet
+**Trained model is available (Note: Please use the newest code!):**
+**Link:**  https://pan.baidu.com/s/1TfeYpkyRORPFLktS9REc2g
+**Password:**  5fe1
+
 #### 1. Car
 ```
 Car AP@0.70, 0.70, 0.70:
@@ -135,7 +139,7 @@ bev  AP:90.86, 90.25, 89.43
 aos  AP:90.75, 89.18, 87.20
 ```
 
-#### 2.Ped&Cyc (Only one model)
+#### 2.Ped&Cyc (Only one model) 
 ```
 Cyclist AP@0.50, 0.50, 0.50:
 bbox AP:86.94, 70.20, 66.22

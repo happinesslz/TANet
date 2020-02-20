@@ -7,9 +7,10 @@ TA:
     INPUT_C_DIM: 9
     BOOST_C_DIM: 64  # or 32
     NUM_POINTS_IN_VOXEL: 100
-    REDUCTION_PA: 8
-    REDUCTION_CA: 8
-    USE_PACA_WEIGHT: True
+    REDUCTION_R: 8
+    # Note: Our released model need set " USE_PACA_WEIGHT: False"
+    # When training model, setting " USE_PACA_WEIGHT: True" may be more stabel
+    USE_PACA_WEIGHT: False #True
 
 PSA:
     C_Bottle: 128

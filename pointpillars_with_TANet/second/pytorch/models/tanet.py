@@ -50,10 +50,10 @@ class CALayer(nn.Module):
 
 # Point-wise attention for each voxel
 class PACALayer(nn.Module):
-    def __init__(self, dim_ca, dim_pa, reduction_ca, reduction_pa):
+    def __init__(self, dim_ca, dim_pa, reduction_r):
         super(PACALayer, self).__init__()
-        self.pa = PALayer(dim_pa,  dim_pa // reduction_pa)
-        self.ca = CALayer(dim_ca,  dim_ca // reduction_ca)
+        self.pa = PALayer(dim_pa,  dim_pa // reduction_r)
+        self.ca = CALayer(dim_ca,  dim_ca // reduction_r)
         self.sig = nn.Sigmoid()
 
     def forward(self, x):
@@ -103,11 +103,11 @@ class VALayer(nn.Module):
 
 class VoxelFeature_TA(nn.Module):
     def __init__(self,dim_ca=cfg.TA.INPUT_C_DIM,dim_pa=cfg.TA.NUM_POINTS_IN_VOXEL,
-                 reduction_ca = cfg.TA.REDUCTION_CA,reduction_pa = cfg.TA.REDUCTION_PA,
-                  boost_c_dim = cfg.TA.BOOST_C_DIM,use_paca_weight = cfg.TA.USE_PACA_WEIGHT):
+                 reduction_r = cfg.TA.REDUCTION_R,boost_c_dim = cfg.TA.BOOST_C_DIM,
+                 use_paca_weight = cfg.TA.USE_PACA_WEIGHT):
         super(VoxelFeature_TA, self).__init__()
-        self.PACALayer1 = PACALayer(dim_ca=dim_ca, dim_pa=dim_pa, reduction_ca=reduction_ca, reduction_pa=reduction_pa)
-        self.PACALayer2 = PACALayer(dim_ca=boost_c_dim, dim_pa=dim_pa, reduction_ca=reduction_ca, reduction_pa=reduction_pa)
+        self.PACALayer1 = PACALayer(dim_ca=dim_ca, dim_pa=dim_pa, reduction_r=reduction_r)
+        self.PACALayer2 = PACALayer(dim_ca=boost_c_dim, dim_pa=dim_pa, reduction_r=reduction_r)
         self.voxel_attention1 = VALayer(c_num=dim_ca, p_num=dim_pa)
         self.voxel_attention2 = VALayer(c_num=boost_c_dim, p_num=dim_pa)
         self.use_paca_weight = use_paca_weight
@@ -127,7 +127,7 @@ class VoxelFeature_TA(nn.Module):
             paca1_feat = voxel_attention1 * paca1 * paca_normal_weight1
         else:
             paca1_feat = voxel_attention1 * paca1
-        out1 = torch.cat([paca1_feat, paca1], dim=2)
+        out1 = torch.cat([paca1_feat, x], dim=2)
         out1 = self.FC1(out1)
 
         paca2,paca_normal_weight2 = self.PACALayer2(out1)
@@ -136,7 +136,7 @@ class VoxelFeature_TA(nn.Module):
             paca2_feat = voxel_attention2 * paca2 * paca_normal_weight2
         else:
             paca2_feat = voxel_attention2 * paca2
-        out2 = paca2 + paca2_feat
+        out2 = out1 + paca2_feat
         out = self.FC2(out2)
 
         return out
