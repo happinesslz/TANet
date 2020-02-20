@@ -122,8 +122,8 @@ Note:  you need specify the absolute  path of Model_Path
 
 ### Results on TANet
 **Trained model is available (Note: Please use the newest code!):**
-
-  https://pan.baidu.com/s/1TfeYpkyRORPFLktS9REc2g   **Password:**  5fe1
+ **Baiduyunpan:** https://pan.baidu.com/s/1TfeYpkyRORPFLktS9REc2g   
+ **Password:**  5fe1
 
 #### 1. Car
 ```
@@ -185,7 +185,7 @@ If you find our work useful in your research, please consider citing:
 ```
 
 ```
-		 @article{lang2018pointpillars,
+         @article{lang2018pointpillars,
          title={PointPillars: Fast Encoders for Object Detection from
          Point Clouds},
          author={Lang, Alex H and Vora, Sourabh and Caesar,
