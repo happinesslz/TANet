@@ -9,7 +9,7 @@ TA:
     NUM_POINTS_IN_VOXEL: 100
     REDUCTION_R: 8
     # Note: Our released model need set " USE_PACA_WEIGHT: False"
-    # When training model, setting " USE_PACA_WEIGHT: True" may be more stabel
+    # When training model, setting " USE_PACA_WEIGHT: True" may be more stable
     USE_PACA_WEIGHT: False #True
 
 PSA:
