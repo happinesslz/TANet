@@ -811,11 +811,8 @@ class VoxelNet(nn.Module):
                     refine_dir_loss = self._dir_loss_ftor(refine_dir_logits, dir_targets, weights=weights)
                     refine_dir_loss = refine_dir_loss.sum() / batch_size_dev
 
-                    ### self._direction_loss_weight = 0.2
-                    total_dir_loss = dir_loss + refine_dir_loss * self._direction_loss_weight
-
-                    ### compute total loss
-                    refine_loss += total_dir_loss
+                    ### compute refine loss   self._direction_loss_weight = 0.2
+                    refine_loss += refine_dir_loss * self._direction_loss_weight
 
                 total_loss = coarse_loss + refine_loss
 
@@ -1109,6 +1106,9 @@ class VoxelNet(nn.Module):
         t = time.time()
 
         num_class_with_bg = self._num_class
+        if not self._encode_background_as_zeros:
+            num_class_with_bg = self._num_class + 1
+
         coarse_box_preds = preds_dict["box_preds"]
 
         refine_box_preds = preds_dict["Refine_loc_preds"]
@@ -1127,9 +1127,6 @@ class VoxelNet(nn.Module):
         batch_cls_preds = refine_cls_preds
         batch_cls_preds = batch_cls_preds.view(batch_size, -1,
                                                num_class_with_bg)
-
-        if not self._encode_background_as_zeros:
-            num_class_with_bg = self._num_class + 1
 
         if self._use_direction_classifier:
             batch_dir_preds = preds_dict["Refine_dir_preds"]
