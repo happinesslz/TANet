@@ -746,8 +746,6 @@ class VoxelNet(nn.Module):
                 coarse_loss += dir_loss * self._direction_loss_weight
 
 
-
-
             if self.rpn_class_name == "PSA" or self.rpn_class_name == "RefineDet":
                 refine_box_preds = preds_dict["Refine_loc_preds"]
                 refine_cls_preds = preds_dict["Refine_cls_preds"]
@@ -820,19 +818,15 @@ class VoxelNet(nn.Module):
                     "loss": total_loss,
                     "coarse_loss": coarse_loss,
                     "refine_loss": refine_loss,
-
                     "cls_loss": cls_loss,
                     "loc_loss": loc_loss,
                     "cls_pos_loss": cls_pos_loss,
                     "cls_neg_loss": cls_neg_loss,
-
                     "refine_cls_loss_reduced": refine_cls_loss_reduced,
                     "refine_loc_loss_reduced": refine_loc_loss_reduced,
-
+                    "refine_dir_loss_reduced": refine_dir_loss,
                     "cls_preds": refine_cls_preds,  ##cls_preds,
-
-                    "dir_loss_reduced": total_dir_loss,  # dir_loss,
-
+                    "dir_loss_reduced": dir_loss,  # dir_loss,
                     "cls_loss_reduced": cls_loss_reduced,
                     "loc_loss_reduced": loc_loss_reduced,
                     "cared": cared,
