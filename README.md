@@ -1,8 +1,9 @@
 # TANet
 
 Our code is mainly based on [PointPillars](https://github.com/nutonomy/second.pytorch) and [SECOND](https://github.com/traveller59/second.pytorch), thanks for them! We also plan to introduce TensorRT to further improve the inference speed. For more information please refer the [Paper](https://arxiv.org/pdf/1912.05163.pdf).  
-### TODO:  
-Add TANet to the newest [second.pytorch](https://github.com/traveller59/second.pytorch). 
+### NEWS UPDATE!  
+**Add TANet to the newest [second.pytorch](https://github.com/traveller59/second.pytorch).** 
+TANet in second.pytorch package achieves the same performance with pointpillars_with_TANet, so I suggest you use second.pytorch_with_TANet instead. In addition, only using TA moudle in Nuscenes achieves an obvious  improvement than pointpillars in Nuscenes dataset.  (Note: On Nuscenes dataset, don't use PSA or other refinemnets, just use the TA module.  )
 
 
 ## The network architecture of [TANet](https://arxiv.org/pdf/1912.05163.pdf)
@@ -165,9 +166,57 @@ aos  AP:52.15, 50.10, 47.10
 ```
 
 
-## TANet for [SECOND](https://github.com/traveller59/second.pytorch) 
+## TANet for [Second.Pytorch](https://github.com/traveller59/second.pytorch) 
 ### Start Up
-TODO:  we will add TANet to the newest [second.pytorch](https://github.com/traveller59/second.pytorch) . 
+Refer the README in  [second.pytorch](https://github.com/traveller59/second.pytorch) . 
+
+Note:
+**you need to specify the " Dataset: Kitti" or "Dataset: Nuscenes" in "tanet.yaml"** 
+
+### On KITTI
+1. Prepare dataset:
+```bash
+python create_data.py kitti_data_prep --root_path=/mnt/data2/Kitti_for_TANet_2/object
+```
+2. Training
+```bash
+CUDA_VISIBLE_DEVICES=5 python ./pytorch/train.py train --config_path=./configs/tanet/car/xyres_16.config --model_dir=/mnt/data2/TANet_2/second.pytorch/second/train_car_tanet_weight_2  --refine_weight=2
+```
+3. Testing
+```bash
+CUDA_VISIBLE_DEVICES=5 python ./pytorch/train.py evaluate --config_path=./configs/tanet/car/xyres_16.config --model_dir=/mnt/data2/TANet_2/second.pytorch/second/train_car_tanet_weight_2 --measure_time=True --batch_size=1
+```
+### On Nuscenes
+NuScenes dataset:
+```plain
+└── NUSCENES_TRAINVAL_DATASET_ROOT
+       ├── samples       <-- key frames
+       ├── sweeps        <-- frames without annotation
+       ├── maps          <-- unused
+       └── v1.0-trainval <-- metadata and annotations
+└── NUSCENES_TEST_DATASET_ROOT
+       ├── samples       <-- key frames
+       ├── sweeps        <-- frames without annotation
+       ├── maps          <-- unused
+       └── v1.0-test     <-- metadata
+```
+
+1. Prepare dataset:
+```bash
+python create_data.py nuscenes_data_prep --root_path=/mnt/data4/NuScenes/train --version="v1.0-trainval" --max_sweeps=10 --dataset_name="NuScenesDataset"
+
+python create_data.py nuscenes_data_prep --root_path=/mnt/data4/NuScenes/test --version="v1.0-test" --max_sweeps=10 --dataset_name="NuScenesDataset"
+```
+
+2. Training
+```bash
+CUDA_VISIBLE_DEVICES=4 python ./pytorch/train.py train --config_path=./configs/nuscenes/all.pp.lowa_only_add_ta_model.config --model_dir=/mnt/data2/TANet_2/second.pytorch/second/train_all_lowa_nuscenes_only_ta_module 
+```
+
+3. Testing
+```bash
+CUDA_VISIBLE_DEVICES=4 python ./pytorch/train.py train --config_path=./configs/nuscenes/all.pp.lowa_only_add_ta_model.config --model_dir=/mnt/data2/TANet_2/second.pytorch/second/train_all_lowa_nuscenes_only_ta_module 
+```
 
 
 ## Citation
@@ -210,6 +259,12 @@ If you find our work useful in your research, please consider citing:
          }
 ```
 
+## Acknowledgement
+
+Our work builds on the  excellent works, which include:
+
+- [pointpillars](<https://github.com/nutonomy/second.pytorch>) 
+- [second.pytorch](<https://github.com/traveller59/second.pytorch>) 
 
 ​         
 
