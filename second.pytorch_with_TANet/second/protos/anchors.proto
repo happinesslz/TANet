@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package second.protos;
+
+message AnchorGeneratorStride {
+  repeated float sizes = 1;
+  repeated float strides = 2;
+  repeated float offsets = 3;
+  repeated float rotations = 4;
+  repeated float custom_values = 5;
+}
+
+message AnchorGeneratorRange {
+  repeated float sizes = 1;
+  repeated float anchor_ranges = 2;
+  repeated float rotations = 3;
+  repeated float custom_values = 4;
+}
+
+message NoAnchor {
+}
+

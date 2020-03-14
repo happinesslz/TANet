@@ -1,0 +1,32 @@
+Network: TANet      # RefineDet ...
+Dataset: Nuscenes    # Kitti or Nuscenes if you want to train the model on different datasets
+
+# config for extracting the voxel feature with TA module on KITTI
+KITTI_TA:
+    INPUT_C_DIM: 9
+    BOOST_C_DIM: 64  # or 32
+    NUM_POINTS_IN_VOXEL: 100
+    REDUCTION_R: 8
+    USE_PACA_WEIGHT: True
+
+# config for extracting the voxel feature with TA module on Nuscenes
+NUSCENES_TA:
+    INPUT_C_DIM: 9
+    BOOST_C_DIM: 32  # or 32 or 64
+    NUM_POINTS_IN_VOXEL: 60  # 100-->60
+    REDUCTION_R: 4  # 8-->4
+    USE_PACA_WEIGHT: True
+
+PSA:
+    C_Bottle: 128
+    C_Reudce: 32
+
+
+
+
+
+
+
+
+
+
