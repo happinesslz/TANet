@@ -579,7 +579,7 @@ class VoxelNet(nn.Module):
             "PillarFeature_TANet": PillarFeature_TANet
         }
         vfe_class = vfe_class_dict[vfe_class_name]
-        if vfe_class_name == "PillarFeatureNet":
+        if vfe_class_name == "PillarFeatureNet" or vfe_class_name == "PillarFeature_TANet":
             self.voxel_feature_extractor = vfe_class(
                 num_input_features,
                 use_norm,

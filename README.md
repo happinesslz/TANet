@@ -33,12 +33,12 @@ you can refer the following steps or directly refer  [PointPillars](https://gith
 #### 2. Install dependence python packages
 
 	conda install scikit-image scipy numba pillow matplotlib
-	pip install fire tensorboardX protobuf opencv-python
+	pip install fire tensorboardX protobuf opencv-python shapely easydict pybind11
 
 
 #### 3. Setup cuda for numba
 
-Add following environment variables for numba to ~/.bashrc:
+Add following environment variables for numba to ~/.bashrc (**Optional**):
 
 ```
 export NUMBAPRO_CUDA_DRIVER=/usr/lib/x86_64-linux-gnu/libcuda.so
